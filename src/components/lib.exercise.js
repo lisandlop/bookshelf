@@ -1,16 +1,18 @@
 import styled from '@emotion/styled/macro'
-import * as mq from 'styles/media-queries'
-import * as color from 'styles/colors.js'
 import {Dialog as ReachDialog} from '@reach/dialog'
+import * as colors from 'styles/colors'
+import * as mq from 'styles/media-queries'
+import {FaSpinner} from 'react-icons/fa'
+import { css, keyframes } from '@emotion/react'
 
 const buttonVariants = {
   primary: {
-    background: color.indigo,
-    color: color.base,
+    background: colors.indigo,
+    color: colors.base,
   },
   secondary: {
-    background: color.gray,
-    color: color.text,
+    background: colors.gray,
+    color: colors.text,
   },
 }
 const Button = styled.button(
@@ -25,8 +27,8 @@ const Button = styled.button(
 
 const Input = styled.input({
   borderRadius: '3px',
-  border: `1px solid ${color.gray10}`,
-  background: color.gray,
+  border: `1px solid ${colors.gray10}`,
+  background: colors.gray,
   padding: '8px 12px',
 })
 
@@ -39,9 +41,9 @@ const CircleButton = styled.button({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  background: color.base,
-  color: color.text,
-  border: `1px solid ${color.gray10}`,
+  background: colors.base,
+  color: colors.text,
+  border: `1px solid ${colors.gray10}`,
   cursor: 'pointer',
 })
 
@@ -62,4 +64,20 @@ const FormGroup = styled.div({
   flexDirection: 'column',
 })
 
-export {Button, Input, CircleButton, Dialog, FormGroup}
+const rotate = keyframes({
+  '0%': {
+    transform: 'rotate(0deg)'
+  },
+  '100%': {
+    transform: 'rotate(360deg)'
+  }, 
+})
+
+const Spinner = styled(FaSpinner)({
+  width: '20px', 
+  height: '20px', 
+  marginLeft: '5px', 
+  animation: `${rotate} 1s linear infinite`, 
+})
+
+export {Button, Input, CircleButton, Dialog, FormGroup, Spinner}
