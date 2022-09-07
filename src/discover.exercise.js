@@ -7,6 +7,7 @@ import {FaSearch} from 'react-icons/fa'
 import {Input, BookListUL, Spinner} from './components/lib'
 import {BookRow} from './components/book-row'
 // 🐨 import the client from './utils/api-client'
+import {client} from './utils/api-client'
 
 function DiscoverBooksScreen() {
   // 🐨 add state for status ('idle', 'loading', or 'success'), data, and query
