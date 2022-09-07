@@ -4,17 +4,16 @@ import {createRoot} from 'react-dom/client'
 import {Dialog} from '@reach/dialog'
 import {Logo} from './components/logo'
 
-function LoginForm({onSubmit, buttonText}) {
+function LoginForm({onSubmitOwnFunc, buttonText}) {
   const handleSubmit = (event) => {
     event.preventDefault()
     const {username, password} = event.target.elements
-    console.log(username.value)
+    console.log('DATA: ' + username.value + ', ' + password.value)
 
-    onSubmit({
+    onSubmitOwnFunc({
       username: username.value, 
       password: password.value, 
     })
-
   }
 
   return (
@@ -53,14 +52,14 @@ function App() {
           <button onClick={() => setOpenModal('none')}>Close</button>
         </div>
         <h3>Login</h3>
-        <LoginForm onSubmit={login} buttonText={'Login'}></LoginForm>
+        <LoginForm onSubmitOwnFunc={login} buttonText={'Login'}></LoginForm>
       </Dialog>
       <Dialog aria-label="Registration form" isOpen={openModal === 'register'}>
         <div>
           <button onClick={() => setOpenModal('none')}>Close</button>
         </div>
         <h3>Register</h3>
-        <LoginForm onSubmit={register} buttonText={'Register'}></LoginForm>
+        <LoginForm onSubmitOwnFunc={register} buttonText={'Register'}></LoginForm>
       </Dialog>
     </div>
   )
