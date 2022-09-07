@@ -3,7 +3,7 @@ import {Dialog as ReachDialog} from '@reach/dialog'
 import * as colors from 'styles/colors'
 import * as mq from 'styles/media-queries'
 import {FaSpinner} from 'react-icons/fa'
-import { css, keyframes } from '@emotion/react'
+import { keyframes } from '@emotion/react'
 
 const buttonVariants = {
   primary: {
