@@ -1,22 +1,50 @@
-import React from 'react'
+import * as React from 'react'
 import {createRoot} from 'react-dom/client'
-import { Logo } from './components/logo'
+import {Logo} from './components/logo'
 
-// 🐨 create an App component here and render the logo, the title ("Bookshelf"), a login button, and a register button.
-// 🐨 for fun, you can add event handlers for both buttons to alert that the button was clicked
-const App = () => {
+import { Dialog } from "@reach/dialog";
+import "@reach/dialog/styles.css";
+
+function App() {
+  const [showDialog, setShowDialog] = React.useState(false);
+  const [openModal, setOpenModal] = React.useState("none");
+  const close = () => setShowDialog(false);
+
   return (
-    <>
-      <Logo width="80" height='80'></Logo>
+    <div>
+      <Logo width="80" height="80" />
       <h1>Bookshelf</h1>
-      <button onClick={() => {console.log('login')}}>Login</button>
-      <button onClick={() => {console.log('register')}}>Register</button>
-    </>
+
+      <div>
+        <button onClick={() => {
+          setShowDialog(true)
+          setOpenModal("Login")
+        }}>Login</button>
+      </div>
+
+      <div>
+        <button onClick={() => {
+          setShowDialog(true)
+          setOpenModal("Register")
+        }}>Register</button>
+      </div>
+
+      <Dialog aria-label="Registration form" isOpen={showDialog} onDismiss={close}>
+        <button 
+          className="close-button" 
+          onClick={() => {
+            setShowDialog(false);
+            setOpenModal("none")
+          }}
+        >
+          Close
+        </button>
+        <p>{openModal}</p>
+      </Dialog>
+    </div>
   )
 }
 
-// 🐨 use createRoot to render the <App /> to the root element
-// 💰 find the root element with: document.getElementById('root')
 const root = createRoot(document.getElementById('root'))
 root.render(<App />)
 export {root}
